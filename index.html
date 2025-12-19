@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build & Sell with Systeme.io</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0c10;
+      --panel: #0f1218;
+      --panel-2: #121622;
+      --text: #f6f7fb;
+      --muted: #c1c6d4;
+      --accent: #6cf1c8;
+      --accent-2: #6fc3ff;
+      --border: rgba(255,255,255,0.08);
+      --gradient: linear-gradient(135deg, #6cf1c8, #6fc3ff);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Manrope", "Inter", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(108, 241, 200, 0.08), transparent 30%),
+                  radial-gradient(circle at 80% 0%, rgba(111, 195, 255, 0.08), transparent 25%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: var(--text);
+    }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--gradient);
+      display: grid;
+      place-items: center;
+      color: #0c111a;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero {
+      background: radial-gradient(circle at 20% 30%, rgba(108,241,200,0.08), transparent 30%),
+                  radial-gradient(circle at 80% 30%, rgba(111,195,255,0.08), transparent 25%),
+                  var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    h1 {
+      font-size: clamp(32px, 4vw, 46px);
+      margin: 16px 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .subhead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .cta {
+      padding: 14px 20px;
+      background: var(--gradient);
+      color: #0c111a;
+      border: none;
+      border-radius: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 10px 30px rgba(108, 241, 200, 0.28);
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(111,195,255,0.25); }
+    .ghost {
+      padding: 13px 18px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .ghost:hover { border-color: rgba(255,255,255,0.18); color: #ffffff; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(108,241,200,0.08), rgba(111,195,255,0.06));
+      opacity: 0.65;
+      pointer-events: none;
+    }
+    .card > * { position: relative; z-index: 1; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+    }
+    h3 { margin: 0; font-size: 20px; }
+    p { margin: 0; }
+    .muted { color: var(--muted); }
+    .list {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--text);
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 6px;
+    }
+    .section-title {
+      margin: 40px 0 8px;
+      font-size: 26px;
+      letter-spacing: -0.01em;
+    }
+    .section-sub {
+      margin: 0 0 18px;
+      color: var(--muted);
+      max-width: 720px;
+    }
+    .faq {
+      display: grid;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .faq-item {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .faq-item h4 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+    .footer {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+    }
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 28px; }
+      header { flex-direction: column; align-items: flex-start; }
+      .cta-row { flex-direction: column; align-items: stretch; }
+      .cta, .ghost { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">S</div>
+        Systeme Launchpad
+      </div>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="resources.html" style="color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.15s ease; text-decoration: none;">Resources</a>
+        <span class="pill">Built for creators • No-code funnels</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">Launch faster with Systeme.io</span>
+      <h1>Build funnels, email lists, and offers without hiring a dev.</h1>
+      <p class="subhead">
+        Systeme.io gives you landing pages, email automation, payments, and courses in one place. I use it to ship offers fast—use my affiliate link below and I’ll share my templates, swipe copy, and setup walkthroughs so you can launch in days, not months.
+      </p>
+      <div class="cta-row">
+        <a class="cta" href="https://systeme.io?sa=AFFILIATE_ID" target="_blank" rel="noopener">Start free with my link</a>
+        <a class="ghost" href="#value">See what you get</a>
+      </div>
+      <p class="note">Replace AFFILIATE_ID with your tracking code.</p>
+
+      <div class="grid" id="value">
+        <div class="card">
+          <span class="tag">What you get</span>
+          <h3>Done-for-you starter pack</h3>
+          <p class="muted">Importable Systeme.io funnel + onboarding checklist.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>High-converting lead-magnet page with social proof slots.</span></li>
+            <li><span class="dot"></span><span>Email welcome + 5-day nurture sequence pre-written.</span></li>
+            <li><span class="dot"></span><span>Checkout page with order bump + simple upsell wiring.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Why Systeme.io</span>
+          <h3>All-in-one, zero plugins</h3>
+          <p class="muted">Pages, email, automations, courses, and payments under one login.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>No-code page builder with fast templates.</span></li>
+            <li><span class="dot"></span><span>Broadcasts, drip campaigns, and triggers included.</span></li>
+            <li><span class="dot"></span><span>Affiliate program ready out of the box.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">My support</span>
+          <h3>Accountability & Q&A</h3>
+          <p class="muted">Use my link and I’ll guide you through your first launch.</p>
+          <ul class="list">
+            <li><span class="dot"></span><span>30-minute kickoff call to map your funnel.</span></li>
+            <li><span class="dot"></span><span>One round of copy feedback before you go live.</span></li>
+            <li><span class="dot"></span><span>Priority responses for setup questions.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Three steps to go live</h2>
+    <p class="section-sub">Follow the same flow I use for launches—no extra tools required.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">01 • Set up</span>
+        <h3>Create your free Systeme.io account</h3>
+        <p class="muted">Use the link above to unlock the bonuses. Pick your niche, connect your domain, and import my funnel in minutes.</p>
+      </div>
+      <div class="card">
+        <span class="tag">02 • Build</span>
+        <h3>Plug in your offer</h3>
+        <p class="muted">Swap the headline, hero, and guarantees with your proof points. Add your digital product or service as a checkout item.</p>
+      </div>
+      <div class="card">
+        <span class="tag">03 • Launch</span>
+        <h3>Send traffic & automate follow-ups</h3>
+        <p class="muted">Connect Stripe/PayPal, set triggers for your email sequence, and push your funnel live. I’ll review before you ship.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Offer stack (for using my link)</h2>
+    <p class="section-sub">I’m incentivized to help you succeed—that’s how affiliate partnerships should work.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Templates</span>
+        <h3>Importable funnel kit</h3>
+        <p class="muted">Hero, lead magnet, checkout, and thank-you pages pre-wired with automations.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Copy</span>
+        <h3>Fill-in-the-blank scripts</h3>
+        <p class="muted">Headlines, bullets, guarantees, and email prompts so you stay on-brand without writer’s block.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Support</span>
+        <h3>Launch desk access</h3>
+        <p class="muted">One feedback loop on your funnel + DM support for technical hurdles.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h4>Do I need to pay to start?</h4>
+        <p class="muted">Systeme.io has a free tier that’s enough to build your first funnel and email sequence. Upgrade only when you start selling.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if I’m not technical?</h4>
+        <p class="muted">The drag-and-drop builder and prebuilt automations handle the heavy lifting. I’ll share a screen-recorded walkthrough with my link.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How fast can I launch?</h4>
+        <p class="muted">Most people import the template, swap copy, and connect payments in under a day. The emails are ready to paste.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What’s your affiliate link?</h4>
+        <p class="muted">Use the buttons on this page or replace <code>AFFILIATE_ID</code> in the URL with your tracking ID. That credits me, and you get the bonuses.</p>
+      </div>
+    </div>
+
+    <div class="hero" style="margin-top:32px; padding:32px;">
+      <h2 style="margin:0 0 8px;">Ready to ship your funnel?</h2>
+      <p class="muted" style="margin:0 0 18px;">Start with Systeme.io, import the kit, and launch with accountability.</p>
+      <div class="cta-row">
+        <a class="cta" href="https://systeme.io?sa=AFFILIATE_ID" target="_blank" rel="noopener">Claim your bonuses</a>
+        <a class="ghost" href="mailto:you@example.com">Ask a question</a>
+      </div>
+      <p class="note">Swap the email with your contact and replace AFFILIATE_ID with your code.</p>
+    </div>
+
+    <div class="footer">
+      <span>Systeme Launchpad • Built with care, no fluff.</span>
+      <span>Affiliate disclosure: I earn a commission when you use my link.</span>
+    </div>
+  </div>
+</body>
+</html>
+
